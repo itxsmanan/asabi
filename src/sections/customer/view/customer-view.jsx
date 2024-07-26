@@ -10,21 +10,21 @@ import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
-import { users } from 'src/_mock/user';
+import { customers } from 'src/_mock/customer';
 
 // import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
 import TableNoData from '../table-no-data';
-import UserTableRow from '../user-table-row';
-import UserTableHead from '../user-table-head';
 import TableEmptyRows from '../table-empty-rows';
-import UserTableToolbar from '../user-table-toolbar';
+import CustomerTableRow from '../customer-table-row';
+import CustomerTableHead from '../customer-table-head';
+import CustomerTableToolbar from '../customer-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 
 // ----------------------------------------------------------------------
 
-export default function UserPage() {
+export default function CustomerView() {
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -47,7 +47,7 @@ export default function UserPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = users.map((n) => n.name);
+      const newSelecteds = customers.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -87,7 +87,7 @@ export default function UserPage() {
   };
 
   const dataFiltered = applyFilter({
-    inputData: users,
+    inputData: customers,
     comparator: getComparator(order, orderBy),
     filterName,
   });
@@ -97,7 +97,7 @@ export default function UserPage() {
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <Typography variant="h4">Services Provider</Typography>
+        <Typography variant="h4">Customers</Typography>
 
         {/* <Button variant="contained" color="error" startIcon={<Iconify icon="eva:plus-fill" />}>
           New User
@@ -105,7 +105,7 @@ export default function UserPage() {
       </Stack>
 
       <Card>
-        <UserTableToolbar
+        <CustomerTableToolbar
           numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
@@ -114,17 +114,20 @@ export default function UserPage() {
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
             <Table sx={{ minWidth: 800 }}>
-              <UserTableHead
+              <CustomerTableHead
                 order={order}
                 orderBy={orderBy}
-                rowCount={users.length}
+                rowCount={customers.length}
                 numSelected={selected.length}
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={[
                   { id: 'name', label: 'Name' },
-                  { id: 'company', label: 'Company' },
-                  { id: 'role', label: 'Role' },
+                  { id: 'sname', label: 'Sur Name' },
+                  { id: 'number', label: 'Number' },
+                  { id: 'email', label: 'Email' },
+                  { id: 'address1', label: 'Address1' },
+                  { id: 'address2', label: 'Address2' },
                   { id: 'isVerified', label: 'Verified', align: 'center' },
                   { id: 'status', label: 'Status' },
                   { id: '' },
@@ -134,10 +137,14 @@ export default function UserPage() {
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
-                    <UserTableRow
+                    <CustomerTableRow
                       key={row.id}
                       name={row.name}
-                      role={row.role}
+                      sname={row.sname}
+                      number={row.number}
+                      email={row.email}
+                      address1={row.address1}
+                      address2={row.address2}
                       status={row.status}
                       company={row.company}
                       avatarUrl={row.avatarUrl}
@@ -149,7 +156,7 @@ export default function UserPage() {
 
                 <TableEmptyRows
                   height={77}
-                  emptyRows={emptyRows(page, rowsPerPage, users.length)}
+                  emptyRows={emptyRows(page, rowsPerPage, customers.length)}
                 />
 
                 {notFound && <TableNoData query={filterName} />}
@@ -161,7 +168,7 @@ export default function UserPage() {
         <TablePagination
           page={page}
           component="div"
-          count={users.length}
+          count={customers.length}
           rowsPerPage={rowsPerPage}
           onPageChange={handleChangePage}
           rowsPerPageOptions={[5, 10, 25]}
