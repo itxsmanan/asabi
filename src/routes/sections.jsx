@@ -7,8 +7,13 @@ export const DashBoard = lazy(() => import('src/pages/app'));
 // export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const IndexPage = lazy(() => import('src/pages/login'));
+export const ServicesProviderDetails = lazy(() => import('src/pages/services-provider-details'));
 export const CustomerPage = lazy(() => import('src/pages/customer'));
+export const CustomerDetailsPage = lazy(() => import('src/pages/customer-details'));
 export const ServicesPage = lazy(() => import('src/pages/services'));
+export const NewServicePage = lazy(() => import('src/pages/newService'));
+export const ContactUsPage = lazy(() => import('src/pages/contactUs'));
+export const AnnouncementPage = lazy(() => import('src/pages/announcements'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 
 // ----------------------------------------------------------------------
@@ -26,8 +31,17 @@ export default function Router() {
       children: [
         { path: 'dashboard', element: <DashBoard /> },
         { path: 'servicesProvider', element: <UserPage /> },
+        {
+          path: 'servicesProviderDetails/:id',
+          component: <ServicesProviderDetails />,
+          element: <ServicesProviderDetails />,
+        },
         { path: 'customer', element: <CustomerPage /> },
+        { path: 'customerDetails', element: <CustomerDetailsPage /> },
         { path: 'services', element: <ServicesPage /> },
+        { path: 'contact', element: <ContactUsPage /> },
+        { path: 'newServicePage', element: <NewServicePage /> },
+        { path: 'announcement', element: <AnnouncementPage /> },
         // { path: 'blog', element: <BlogPage /> },
       ],
     },

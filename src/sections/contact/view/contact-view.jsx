@@ -16,15 +16,15 @@ import { users } from 'src/_mock/user';
 import Scrollbar from 'src/components/scrollbar';
 
 import TableNoData from '../table-no-data';
-import UserTableRow from '../user-table-row';
-import UserTableHead from '../user-table-head';
 import TableEmptyRows from '../table-empty-rows';
-import UserTableToolbar from '../user-table-toolbar';
+import ContactTableRow from '../contact-table-row';
+import ContactTableHead from '../contact-table-head';
+import ContactTableToolbar from '../contact-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 
 // ----------------------------------------------------------------------
 
-export default function UserPage() {
+export default function ContactUsPage() {
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -45,14 +45,14 @@ export default function UserPage() {
     }
   };
 
-  // const handleSelectAllClick = (event) => {
-  //   if (event.target.checked) {
-  //     const newSelecteds = users.map((n) => n.name);
-  //     setSelected(newSelecteds);
-  //     return;
-  //   }
-  //   setSelected([]);
-  // };
+  const handleSelectAllClick = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = users.map((n) => n.name);
+      setSelected(newSelecteds);
+      return;
+    }
+    setSelected([]);
+  };
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
@@ -97,15 +97,15 @@ export default function UserPage() {
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <Typography variant="h4">Services Provider</Typography>
+        <Typography variant="h4">Contact</Typography>
 
         {/* <Button variant="contained" color="error" startIcon={<Iconify icon="eva:plus-fill" />}>
-          New User
+          New Service
         </Button> */}
       </Stack>
 
       <Card>
-        <UserTableToolbar
+        <ContactTableToolbar
           numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
@@ -114,42 +114,35 @@ export default function UserPage() {
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
             <Table sx={{ minWidth: 800 }}>
-              <UserTableHead
+              <ContactTableHead
                 order={order}
                 orderBy={orderBy}
                 rowCount={users.length}
                 numSelected={selected.length}
                 onRequestSort={handleSort}
-                // onSelectAllClick={handleSelectAllClick}
+                onSelectAllClick={handleSelectAllClick}
                 headLabel={[
-                  { id: 'name', label: 'Name' },
-                  // { id: 'company', label: 'Company' },
-
-                  { id: 'sname', label: 'Sur Name' },
-                  { id: 'number', label: 'Number' },
                   { id: 'email', label: 'Email' },
-                  // { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
-                  { id: `${users.id}` },
+                  { id: 'message', label: 'Message' },
+                  // // { id: 'role', label: 'Role' },
+                  // // { id: 'isVerified', label: 'Verified', align: 'center' },
+                  // { id: 'status', label: 'Status' },
+                  { id: '' },
                 ]}
               />
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
-                    <UserTableRow
+                    <ContactTableRow
                       key={row.id}
-                      id={row.id}
-                      status={row.status}
-                      name={row.name}
-                      sname={row.sname}
-                      number={row.number}
                       email={row.email}
-                      // company={row.company}
+                      role={row.role}
+                      status={row.status}
+                      message={row.message}
                       avatarUrl={row.avatarUrl}
                       isVerified={row.isVerified}
-                      // selected={selected.indexOf(row.name) !== -1}
+                      selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
                     />
                   ))}

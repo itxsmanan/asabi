@@ -126,8 +126,8 @@ export default function CustomerView() {
                   { id: 'sname', label: 'Sur Name' },
                   { id: 'number', label: 'Number' },
                   { id: 'email', label: 'Email' },
-                  { id: 'address1', label: 'Address1' },
-                  { id: 'address2', label: 'Address2' },
+                  // { id: 'address1', label: 'Address1' },
+                  // { id: 'address2', label: 'Address2' },
                   { id: 'isVerified', label: 'Verified', align: 'center' },
                   { id: 'status', label: 'Status' },
                   { id: '' },
@@ -143,10 +143,10 @@ export default function CustomerView() {
                       sname={row.sname}
                       number={row.number}
                       email={row.email}
-                      address1={row.address1}
-                      address2={row.address2}
+                      // address1={row.address1}
+                      // address2={row.address2}
                       status={row.status}
-                      company={row.company}
+                      // company={row.company}
                       avatarUrl={row.avatarUrl}
                       isVerified={row.isVerified}
                       selected={selected.indexOf(row.name) !== -1}

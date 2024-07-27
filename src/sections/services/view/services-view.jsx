@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
+import { useRouter } from 'src/routes/hooks';
+
 import { users } from 'src/_mock/user';
 
 import Iconify from 'src/components/iconify';
@@ -94,12 +96,22 @@ export default function UserPage() {
 
   const notFound = !dataFiltered.length && !!filterName;
 
+  const router = useRouter();
+  const handleSubmt = () => {
+    router.push('/newServicePage');
+  };
+
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
         <Typography variant="h4">Services</Typography>
 
-        <Button variant="contained" color="error" startIcon={<Iconify icon="eva:plus-fill" />}>
+        <Button
+          variant="contained"
+          color="error"
+          startIcon={<Iconify icon="eva:plus-fill" />}
+          onClick={() => handleSubmt()}
+        >
           New Service
         </Button>
       </Stack>
@@ -122,8 +134,8 @@ export default function UserPage() {
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={[
-                  { id: 'name', label: 'Title' },
-                  { id: 'company', label: 'Type' },
+                  { id: 'services', label: 'Title' },
+                  { id: 'type', label: 'Type' },
                   // // { id: 'role', label: 'Role' },
                   // // { id: 'isVerified', label: 'Verified', align: 'center' },
                   // { id: 'status', label: 'Status' },
@@ -136,8 +148,8 @@ export default function UserPage() {
                   .map((row) => (
                     <ServicesTableRow
                       key={row.id}
-                      name={row.name}
-                      role={row.role}
+                      services={row.services}
+                      type={row.type}
                       status={row.status}
                       company={row.company}
                       avatarUrl={row.avatarUrl}

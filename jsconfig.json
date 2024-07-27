@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": "."
-  }
+  },
+  "settings": {
+    "eslint.enable": false
+  },
+  "eslint.rules.customizations": [
+    {
+      "rule": "*",
+      "severity": "off"
+    }
+  ]
 }

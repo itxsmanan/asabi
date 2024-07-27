@@ -20,17 +20,22 @@ const navConfig = [
   {
     title: 'customers',
     path: '/customer',
-    icon: icon('ic_cart'),
+    icon: icon('ic_customer'),
   },
   {
     title: 'services',
     path: '/services',
-    icon: icon('ic_blog'),
+    icon: icon('ic_services'),
   },
   {
-    title: 'login',
-    path: '/',
-    icon: icon('ic_lock'),
+    title: 'announcement',
+    path: '/announcement',
+    icon: icon('ic_announcement'),
+  },
+  {
+    title: 'contact us',
+    path: '/contact',
+    icon: icon('ic_contact'),
   },
   // {
   //   title: 'Not found',

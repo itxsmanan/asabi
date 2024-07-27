@@ -26,42 +26,38 @@ export default function AppView() {
       </Typography>
 
       <Grid container spacing={3}>
-        <Grid xs={12} sm={6} md={3}>
+        {/* <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="Weekly Sales"
             total={714000}
             color="success"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
           />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
+        </Grid> */}
+        <Grid xs={12} sm={6} md={4}>
           <AppWidgetSummary
-            title="New Users"
-            total={1352831}
-            color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="Item Orders"
+            title="Services Provider"
             total={1723315}
             color="warning"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
           />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
+        </Grid>{' '}
+        <Grid xs={12} sm={6} md={4}>
           <AppWidgetSummary
-            title="Bug Reports"
-            total={234}
-            color="error"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
+            title="Total Customers"
+            total={1723315}
+            color="warning"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_customers.png" />}
           />
         </Grid>
-
+        <Grid xs={12} sm={6} md={4}>
+          <AppWidgetSummary
+            title="Total Services"
+            total={234}
+            color="warning"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_services.png" />}
+          />
+        </Grid>
         {/* <Grid xs={12} md={6} lg={8}>
           <AppWebsiteVisits
             title="Website Visits"
@@ -103,7 +99,6 @@ export default function AppView() {
             }}
           />
         </Grid> */}
-
         {/* <Grid xs={12} md={6} lg={4}>
           <AppCurrentVisits
             title="Current Visits"
@@ -117,7 +112,6 @@ export default function AppView() {
             }}
           />
         </Grid> */}
-
         {/* <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
             title="Conversion Rates"
@@ -138,7 +132,6 @@ export default function AppView() {
             }}
           />
         </Grid> */}
-
         {/* <Grid xs={12} md={6} lg={4}>
           <AppCurrentSubject
             title="Current Subject"
@@ -152,7 +145,6 @@ export default function AppView() {
             }}
           />
         </Grid> */}
-
         {/* <Grid xs={12} md={6} lg={8}>
           <AppNewsUpdate
             title="News Update"
@@ -165,7 +157,6 @@ export default function AppView() {
             }))}
           />
         </Grid> */}
-
         {/* <Grid xs={12} md={6} lg={4}>
           <AppOrderTimeline
             title="Order Timeline"
@@ -183,7 +174,6 @@ export default function AppView() {
             }))}
           />
         </Grid> */}
-
         {/* <Grid xs={12} md={6} lg={4}>
           <AppTrafficBySite
             title="Traffic by Site"
@@ -211,7 +201,6 @@ export default function AppView() {
             ]}
           />
         </Grid> */}
-
         {/* <Grid xs={12} md={6} lg={8}>
           <AppTasks
             title="Tasks"

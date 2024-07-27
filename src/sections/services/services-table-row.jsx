@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 // import Avatar from '@mui/material/Avatar';
 import Popover from '@mui/material/Popover';
 import TableRow from '@mui/material/TableRow';
-import Checkbox from '@mui/material/Checkbox';
+// import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
@@ -18,9 +18,9 @@ import Iconify from 'src/components/iconify';
 
 export default function UserTableRow({
   selected,
-  name,
+  type,
   // avatarUrl,
-  company,
+  services,
   // role,
   // isVerified,
   // status,
@@ -39,20 +39,20 @@ export default function UserTableRow({
   return (
     <>
       <TableRow hover tabIndex={-1} role="checkbox" selected={selected}>
-        <TableCell padding="checkbox">
+        {/* <TableCell padding="checkbox">
           <Checkbox disableRipple checked={selected} onChange={handleClick} />
-        </TableCell>
+        </TableCell> */}
 
-        <TableCell component="th" scope="row" padding="none">
+        <TableCell component="th" scope="row" sx={{ p: 2 }}>
           <Stack direction="row" alignItems="center" spacing={2}>
             {/* <Avatar alt={name} src={avatarUrl} /> */}
             <Typography variant="subtitle2" noWrap>
-              {name}
+              {services}
             </Typography>
           </Stack>
         </TableCell>
 
-        <TableCell>{company}</TableCell>
+        <TableCell>{type}</TableCell>
 
         {/* <TableCell>{role}</TableCell> */}
 
@@ -95,10 +95,10 @@ export default function UserTableRow({
 
 UserTableRow.propTypes = {
   // avatarUrl: PropTypes.any,
-  company: PropTypes.any,
+  type: PropTypes.any,
   handleClick: PropTypes.func,
   // isVerified: PropTypes.any,
-  name: PropTypes.any,
+  services: PropTypes.any,
   // role: PropTypes.any,
   selected: PropTypes.any,
   // status: PropTypes.string,
