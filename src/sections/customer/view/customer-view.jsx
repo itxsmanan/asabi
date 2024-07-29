@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 // import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
@@ -95,8 +95,8 @@ export default function CustomerView() {
   const notFound = !dataFiltered.length && !!filterName;
 
   return (
-    <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+    <div>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography variant="h4">Customers</Typography>
 
         {/* <Button variant="contained" color="error" startIcon={<Iconify icon="eva:plus-fill" />}>
@@ -129,7 +129,7 @@ export default function CustomerView() {
                   // { id: 'address1', label: 'Address1' },
                   // { id: 'address2', label: 'Address2' },
                   { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
+                  // { id: 'status', label: 'Status' },
                   { id: '' },
                 ]}
               />
@@ -145,7 +145,7 @@ export default function CustomerView() {
                       email={row.email}
                       // address1={row.address1}
                       // address2={row.address2}
-                      status={row.status}
+                      // status={row.status}
                       // company={row.company}
                       avatarUrl={row.avatarUrl}
                       isVerified={row.isVerified}
@@ -175,6 +175,6 @@ export default function CustomerView() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>
-    </Container>
+    </div>
   );
 }

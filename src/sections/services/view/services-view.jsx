@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
@@ -102,13 +102,13 @@ export default function UserPage() {
   };
 
   return (
-    <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+    <div>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography variant="h4">Services</Typography>
 
         <Button
           variant="contained"
-          color="error"
+          sx={{ backgroundColor: '#d32f2f', '&:hover': { backgroundColor: '#d32f2f' } }}
           startIcon={<Iconify icon="eva:plus-fill" />}
           onClick={() => handleSubmt()}
         >
@@ -116,7 +116,7 @@ export default function UserPage() {
         </Button>
       </Stack>
 
-      <Card>
+      <Card sx={{ marginTop: 1 }}>
         <ServicesTableToolbar
           numSelected={selected.length}
           filterName={filterName}
@@ -150,10 +150,10 @@ export default function UserPage() {
                       key={row.id}
                       services={row.services}
                       type={row.type}
-                      status={row.status}
-                      company={row.company}
-                      avatarUrl={row.avatarUrl}
-                      isVerified={row.isVerified}
+                      // status={row.status}
+                      // company={row.company}
+                      // avatarUrl={row.avatarUrl}
+                      // isVerified={row.isVerified}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
                     />
@@ -180,6 +180,6 @@ export default function UserPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>
-    </Container>
+    </div>
   );
 }

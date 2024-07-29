@@ -3,7 +3,7 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
-import { Container } from '@mui/material';
+// import { Container } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 // import IconButton from '@mui/material/IconButton';
@@ -32,7 +32,7 @@ export default function NewService() {
   };
 
   const renderForm = (
-    <>
+    <div>
       <Stack spacing={3} sx={{ my: 3 }}>
         <TextField name="title" label="Title" />
 
@@ -44,17 +44,17 @@ export default function NewService() {
         size="large"
         type="submit"
         variant="contained"
-        color="error"
+        sx={{ backgroundColor: '#d32f2f', '&:hover': { backgroundColor: '#d32f2f' } }}
         onClick={handleClick}
       >
         Add Service
       </LoadingButton>
-    </>
+    </div>
   );
 
   return (
-    <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+    <div>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography variant="h4">New Services</Typography>
       </Stack>
       <Box
@@ -68,7 +68,7 @@ export default function NewService() {
         <Stack sx={{ height: 1 }}>
           <Card
             sx={{
-              p: 5,
+              p: 2,
               width: 1,
               maxWidth: 500,
             }}
@@ -77,6 +77,6 @@ export default function NewService() {
           </Card>
         </Stack>
       </Box>
-    </Container>
+    </div>
   );
 }

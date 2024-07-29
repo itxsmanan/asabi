@@ -17,14 +17,14 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function UserTableRow({
-  selected,
+  // selected,
   type,
   // avatarUrl,
   services,
   // role,
   // isVerified,
   // status,
-  handleClick,
+  // handleClick,
 }) {
   const [open, setOpen] = useState(null);
 
@@ -38,7 +38,7 @@ export default function UserTableRow({
 
   return (
     <>
-      <TableRow hover tabIndex={-1} role="checkbox" selected={selected}>
+      <TableRow hover tabIndex={-1}>
         {/* <TableCell padding="checkbox">
           <Checkbox disableRipple checked={selected} onChange={handleClick} />
         </TableCell> */}
@@ -96,10 +96,10 @@ export default function UserTableRow({
 UserTableRow.propTypes = {
   // avatarUrl: PropTypes.any,
   type: PropTypes.any,
-  handleClick: PropTypes.func,
+  // handleClick: PropTypes.func,
   // isVerified: PropTypes.any,
   services: PropTypes.any,
   // role: PropTypes.any,
-  selected: PropTypes.any,
+  // selected: PropTypes.any,
   // status: PropTypes.string,
 };

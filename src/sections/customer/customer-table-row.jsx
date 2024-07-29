@@ -13,7 +13,7 @@ import IconButton from '@mui/material/IconButton';
 
 import { useRouter } from 'src/routes/hooks';
 
-import Label from 'src/components/label';
+// import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -28,7 +28,7 @@ export default function UserTableRow({
   // address1,
   // address2,
   isVerified,
-  status,
+  // status,
   handleClick,
 }) {
   const [open, setOpen] = useState(null);
@@ -71,10 +71,10 @@ export default function UserTableRow({
         <TableCell>{address2}</TableCell> */}
 
         <TableCell align="center">{isVerified ? 'Yes' : 'No'}</TableCell>
-
+        {/* 
         <TableCell>
           <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
-        </TableCell>
+        </TableCell> */}
 
         <TableCell align="right">
           <IconButton onClick={handleOpenMenu}>
@@ -121,5 +121,5 @@ UserTableRow.propTypes = {
   // address1: PropTypes.any,
   // address2: PropTypes.any,
   selected: PropTypes.any,
-  status: PropTypes.string,
+  // status: PropTypes.string,
 };

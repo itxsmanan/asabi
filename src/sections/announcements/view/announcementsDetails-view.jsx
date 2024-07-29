@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import { Stack, Button, TextField, Typography } from '@mui/material';
 
 export default function AnnouncementsPage() {
@@ -17,8 +17,8 @@ export default function AnnouncementsPage() {
     // Perform form submission logic here
   };
   return (
-    <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+    <div>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography variant="h4">Send Announcement</Typography>
       </Stack>
       <Box
@@ -47,10 +47,15 @@ export default function AnnouncementsPage() {
           required
           fullWidth
         />
-        <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ backgroundColor: '#d32f2f', '&:hover': { backgroundColor: '#d32f2f' } }}
+          ssx={{ mt: 2 }}
+        >
           Send
         </Button>
       </Box>
-    </Container>
+    </div>
   );
 }

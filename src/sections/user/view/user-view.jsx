@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 // import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
@@ -95,8 +95,8 @@ export default function UserPage() {
   const notFound = !dataFiltered.length && !!filterName;
 
   return (
-    <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+    <div>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography variant="h4">Services Provider</Typography>
 
         {/* <Button variant="contained" color="error" startIcon={<Iconify icon="eva:plus-fill" />}>
@@ -175,6 +175,6 @@ export default function UserPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>
-    </Container>
+    </div>
   );
 }

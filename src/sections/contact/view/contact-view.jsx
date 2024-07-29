@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 // import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
@@ -15,11 +15,11 @@ import { users } from 'src/_mock/user';
 // import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
-import TableNoData from '../table-no-data';
+// import TableNoData from '../table-no-data';
 import TableEmptyRows from '../table-empty-rows';
 import ContactTableRow from '../contact-table-row';
 import ContactTableHead from '../contact-table-head';
-import ContactTableToolbar from '../contact-table-toolbar';
+// import ContactTableToolbar from '../contact-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 
 // ----------------------------------------------------------------------
@@ -33,7 +33,7 @@ export default function ContactUsPage() {
 
   const [orderBy, setOrderBy] = useState('name');
 
-  const [filterName, setFilterName] = useState('');
+  // const [filterName, setFilterName] = useState('');
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -81,22 +81,19 @@ export default function ContactUsPage() {
     setRowsPerPage(parseInt(event.target.value, 10));
   };
 
-  const handleFilterByName = (event) => {
-    setPage(0);
-    setFilterName(event.target.value);
-  };
+  // const handleFilterByName = (event) => {
+  //   setPage(0);
+  //   setFilterName(event.target.value);
+  // };
 
   const dataFiltered = applyFilter({
     inputData: users,
     comparator: getComparator(order, orderBy),
-    filterName,
   });
 
-  const notFound = !dataFiltered.length && !!filterName;
-
   return (
-    <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+    <div>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography variant="h4">Contact</Typography>
 
         {/* <Button variant="contained" color="error" startIcon={<Iconify icon="eva:plus-fill" />}>
@@ -105,11 +102,11 @@ export default function ContactUsPage() {
       </Stack>
 
       <Card>
-        <ContactTableToolbar
+        {/* <ContactTableToolbar
           numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
-        />
+        /> */}
 
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
@@ -151,8 +148,6 @@ export default function ContactUsPage() {
                   height={77}
                   emptyRows={emptyRows(page, rowsPerPage, users.length)}
                 />
-
-                {notFound && <TableNoData query={filterName} />}
               </TableBody>
             </Table>
           </TableContainer>
@@ -168,6 +163,6 @@ export default function ContactUsPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>
-    </Container>
+    </div>
   );
 }

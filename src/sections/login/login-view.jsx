@@ -107,7 +107,7 @@ export default function LoginView() {
         size="large"
         type="submit"
         variant="contained"
-        color="error"
+        sx={{ backgroundColor: '#d32f2f', '&:hover': { backgroundColor: '#d32f2f' } }}
         onClick={handleClick}
       >
         Login

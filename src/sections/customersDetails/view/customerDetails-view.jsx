@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -32,15 +32,15 @@ export default function CustomerDetails() {
   // { label: 'Current Driving Experince' },
 
   return (
-    <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+    <div>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography variant="h4">Customer Details</Typography>
       </Stack>
       <Card variant="outlined" sx={{ maxWidth: 660 }}>
         <Box sx={{ p: 2 }}>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Typography gutterBottom variant="h6" component="div">
-              Name
+              Jose Englis
             </Typography>
             {/* <Typography gutterBottom variant="h6" component="div">
               w
@@ -104,6 +104,6 @@ export default function CustomerDetails() {
           </List>
         </Box>
       </Card>
-    </Container>
+    </div>
   );
 }
