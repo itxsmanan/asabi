@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import Popover from '@mui/material/Popover';
@@ -11,9 +11,6 @@ import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-import { useRouter } from 'src/routes/hooks';
-
-// import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -26,7 +23,8 @@ export default function UserTableRow({
   number,
   email,
   avatarUrl,
-  // company,
+  services,
+  type,
   // role,
   // isVerified,
   // status,
@@ -38,31 +36,19 @@ export default function UserTableRow({
     setOpen(event.currentTarget);
   };
 
-  const router = useRouter();
-
-  const handleDetails = (i) => {
-    router.push(`/servicesProviderDetails/${i}`);
-    console.log('id:', i);
-  };
-  const router2 = useRouter();
-
-  const handleSubContractors = (i) => {
-    router2.push('/subContractorsView');
-  };
-
   const handleCloseMenu = () => {
     setOpen(null);
   };
-  const [isVerified, setIsVerified] = useState(false);
+  // const [isVerified, setIsVerified] = useState(false);
 
-  // Function to simulate verification
-  const handleVerify = () => {
-    // Simulate verification logic here
-    const verificationStatus = true; // Change this to your verification logic
-    setIsVerified(verificationStatus);
-  };
-  const buttonColor = isVerified ? 'success' : 'error';
-  const buttonText = isVerified ? 'Verified' : 'Verify';
+  // // Function to simulate verification
+  // const handleVerify = () => {
+  //   // Simulate verification logic here
+  //   const verificationStatus = true; // Change this to your verification logic
+  //   setIsVerified(verificationStatus);
+  // };
+  // const buttonColor = isVerified ? 'success' : 'error';
+  // const buttonText = isVerified ? 'Verified' : 'Verify';
 
   return (
     <>
@@ -85,16 +71,7 @@ export default function UserTableRow({
         <TableCell>{number}</TableCell>
         <TableCell>{email}</TableCell>
 
-        <TableCell align="center">
-          <Button
-            onClick={handleVerify}
-            variant="outlined"
-            color={buttonColor} // Use the color prop to set button color
-          >
-            {buttonText}
-          </Button>
-        </TableCell>
-
+        <TableCell align="center">{services}</TableCell>
         {/* <TableCell>
           <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
         </TableCell> */}
@@ -113,21 +90,13 @@ export default function UserTableRow({
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         PaperProps={{
-          sx: { width: 180 },
+          sx: { width: 120 },
         }}
       >
         <MenuItem onClick={handleCloseMenu}>
           <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
           Edit
         </MenuItem>{' '}
-        <MenuItem onClick={() => handleDetails({ id })}>
-          <Iconify icon="eva:list-fill" sx={{ mr: 2 }} />
-          Details
-        </MenuItem>
-        <MenuItem onClick={() => handleSubContractors({ id })}>
-          <Iconify icon="eva:people-fill" sx={{ mr: 2 }} />
-          Sub-Contractors
-        </MenuItem>
         <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
           Delete
@@ -146,7 +115,7 @@ UserTableRow.propTypes = {
   sname: PropTypes.any,
   email: PropTypes.any,
   number: PropTypes.any,
-  // role: PropTypes.any,
-  // selected: PropTypes.any,
+  services: PropTypes.any,
+  type: PropTypes.any,
   // status: PropTypes.string,
 };

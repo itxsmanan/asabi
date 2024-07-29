@@ -5,6 +5,7 @@ import DashboardLayout from 'src/layouts/dashboard';
 
 export const DashBoard = lazy(() => import('src/pages/app'));
 // export const BlogPage = lazy(() => import('src/pages/blog'));
+export const Login = lazy(() => import('src/pages/login'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const IndexPage = lazy(() => import('src/pages/login'));
 export const ServicesProviderDetails = lazy(() => import('src/pages/services-provider-details'));
@@ -13,6 +14,7 @@ export const CustomerDetailsPage = lazy(() => import('src/pages/customer-details
 export const ServicesPage = lazy(() => import('src/pages/services'));
 export const NewServicePage = lazy(() => import('src/pages/newService'));
 export const ContactUsPage = lazy(() => import('src/pages/contactUs'));
+export const Subcontractors = lazy(() => import('src/pages/subcontractors'));
 export const AnnouncementPage = lazy(() => import('src/pages/announcements'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 
@@ -39,10 +41,10 @@ export default function Router() {
         { path: 'customer', element: <CustomerPage /> },
         { path: 'customerDetails', element: <CustomerDetailsPage /> },
         { path: 'services', element: <ServicesPage /> },
-        { path: 'contact', element: <ContactUsPage /> },
         { path: 'newServicePage', element: <NewServicePage /> },
+        { path: 'contact', element: <ContactUsPage /> },
         { path: 'announcement', element: <AnnouncementPage /> },
-        // { path: 'blog', element: <BlogPage /> },
+        { path: 'subContractorsView', element: <Subcontractors /> },
       ],
     },
     {

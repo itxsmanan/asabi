@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Box from '@mui/material/Box';
 // import Link from '@mui/material/Link';
@@ -6,6 +6,7 @@ import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 // import Button from '@mui/material/Button';
 // import Divider from '@mui/material/Divider';
+import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -23,6 +24,12 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function LoginView() {
+  const email = useRef();
+  const password = useRef();
+
+  const [error, setError] = useState({ email: '', password: '' });
+  const [alert, setAlert] = useState('');
+
   const theme = useTheme();
 
   const router = useRouter();
@@ -30,17 +37,52 @@ export default function LoginView() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClick = () => {
-    router.push('/dashboard');
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+
+    // console.log('Email:', emailValue);
+    // console.log('Password:', passwordValue);
+
+    // Reset error messages
+    setError({ email: '', password: '' });
+    setAlert('');
+
+    if (emailValue === 'admin@admin.com' && passwordValue === 'admin') {
+      localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('emailData', emailValue);
+      localStorage.setItem('passwordData', passwordValue);
+      console.log('Data stored in localStorage');
+      router.push('/dashboard');
+    } else {
+      // Set error messages
+      setError({
+        email: emailValue !== 'admin@admin.com' ? 'Invalid email' : '',
+        password: passwordValue !== 'admin' ? 'Invalid password' : '',
+      });
+      setAlert('Invalid email or password. Please try again.');
+    }
   };
 
   const renderForm = (
     <>
+      {alert && (
+        <Stack sx={{ width: '100%' }} spacing={2}>
+          <Alert severity="error">{alert}</Alert>
+        </Stack>
+      )}
       <Stack spacing={3} sx={{ my: 3 }}>
-        <TextField name="email" label="Email address" />
+        <TextField
+          name="email"
+          label="Email address"
+          inputRef={email}
+          error={Boolean(error.email)}
+        />
 
         <TextField
           name="password"
           label="Password"
+          inputRef={password}
+          error={Boolean(error.password)}
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
