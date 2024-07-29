@@ -44,6 +44,14 @@ export default function AppView() {
         </Grid>{' '}
         <Grid xs={12} sm={6} md={4}>
           <AppWidgetSummary
+            title="ADI/PDI Requests"
+            total={4}
+            color="warning"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_request.png" />}
+          />
+        </Grid>{' '}
+        <Grid xs={12} sm={6} md={4}>
+          <AppWidgetSummary
             title="Total Customers"
             total={1723315}
             color="warning"

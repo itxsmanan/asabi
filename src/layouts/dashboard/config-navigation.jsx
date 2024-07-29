@@ -18,6 +18,11 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
+    title: 'ADI/PDI Requests',
+    path: '/adiPdiRequest',
+    icon: icon('ic_request'),
+  },
+  {
     title: 'customers',
     path: '/customer',
     icon: icon('ic_customer'),

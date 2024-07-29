@@ -6,6 +6,7 @@ import DashboardLayout from 'src/layouts/dashboard';
 export const DashBoard = lazy(() => import('src/pages/app'));
 // export const BlogPage = lazy(() => import('src/pages/blog'));
 export const Login = lazy(() => import('src/pages/login'));
+export const AdiPdiRequest = lazy(() => import('src/pages/adiPdiRequest'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const IndexPage = lazy(() => import('src/pages/login'));
 export const ServicesProviderDetails = lazy(() => import('src/pages/services-provider-details'));
@@ -45,6 +46,7 @@ export default function Router() {
         { path: 'contact', element: <ContactUsPage /> },
         { path: 'announcement', element: <AnnouncementPage /> },
         { path: 'subContractorsView', element: <Subcontractors /> },
+        { path: 'adiPdiRequest', element: <AdiPdiRequest /> },
       ],
     },
     {

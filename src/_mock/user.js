@@ -47,6 +47,7 @@ export const users = [...Array(24)].map((_, index) => ({
   ]),
   type: sample(['Intensive Driving Course', 'Mock Test', 'Occasional Driving Lesson']),
   services: sample(['Springfield', 'Rivertown', 'Brooksville', 'Greenfield']),
+  servicesType: sample(['PDI', 'ADI']),
   // address2: sample([
   //   '123 Elm Street, Springfield, IL 62701',
   //   '456 Maple Avenue, Rivertown, TX 75001',

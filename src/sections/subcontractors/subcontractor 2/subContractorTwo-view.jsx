@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import Card from '@mui/material/Card';
+// import Card from '@mui/material/Card';
 // import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 // import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import TableBody from '@mui/material/TableBody';
 // import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
@@ -95,77 +95,74 @@ export default function SubcontractorsTwo() {
   const notFound = !dataFiltered.length && !!filterName;
 
   return (
-    <Container>
-      <Card>
-        <SubcontractorsTwoTableToolbar
-          numSelected={selected.length}
-          filterName={filterName}
-          onFilterName={handleFilterByName}
-        />
+    <div>
+      {/* <Card> */}
+      <SubcontractorsTwoTableToolbar
+        numSelected={selected.length}
+        filterName={filterName}
+        onFilterName={handleFilterByName}
+      />
 
-        <Scrollbar>
-          <TableContainer sx={{ overflow: 'unset' }}>
-            <Table sx={{ minWidth: 800 }}>
-              <SubcontractorsTwoTableHead
-                order={order}
-                orderBy={orderBy}
-                rowCount={users.length}
-                numSelected={selected.length}
-                onRequestSort={handleSort}
-                // onSelectAllClick={handleSelectAllClick}
-                headLabel={[
-                  { id: 'name', label: 'Name Sub2' },
-                  // { id: 'company', label: 'Company' },
+      <Scrollbar>
+        <TableContainer sx={{ overflow: 'unset' }}>
+          <Table sx={{ minWidth: 800 }}>
+            <SubcontractorsTwoTableHead
+              order={order}
+              orderBy={orderBy}
+              rowCount={users.length}
+              numSelected={selected.length}
+              onRequestSort={handleSort}
+              // onSelectAllClick={handleSelectAllClick}
+              headLabel={[
+                { id: 'name', label: 'Name (PDI)' },
+                // { id: 'company', label: 'Company' },
 
-                  { id: 'sname', label: 'Sur Name' },
-                  { id: 'number', label: 'Number' },
-                  { id: 'email', label: 'Email' },
-                  // { id: 'role', label: 'Role' },
-                  { id: 'services', label: 'Services', align: 'center' },
+                { id: 'sname', label: 'Sur Name' },
+                { id: 'number', label: 'Number' },
+                { id: 'email', label: 'Email' },
+                // { id: 'role', label: 'Role' },
+                { id: 'services', label: 'Services', align: 'center' },
 
-                  { id: `${users.id}` },
-                ]}
-              />
-              <TableBody>
-                {dataFiltered
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => (
-                    <SubcontractorsTwoTableRow
-                      key={row.id}
-                      id={row.id}
-                      name={row.name}
-                      sname={row.sname}
-                      number={row.number}
-                      email={row.email}
-                      // company={row.company}
-                      avatarUrl={row.avatarUrl}
-                      services={row.services}
-                      // selected={selected.indexOf(row.name) !== -1}
-                      handleClick={(event) => handleClick(event, row.name)}
-                    />
-                  ))}
+                { id: `${users.id}` },
+              ]}
+            />
+            <TableBody>
+              {dataFiltered
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => (
+                  <SubcontractorsTwoTableRow
+                    key={row.id}
+                    id={row.id}
+                    name={row.name}
+                    sname={row.sname}
+                    number={row.number}
+                    email={row.email}
+                    // company={row.company}
+                    avatarUrl={row.avatarUrl}
+                    services={row.services}
+                    // selected={selected.indexOf(row.name) !== -1}
+                    handleClick={(event) => handleClick(event, row.name)}
+                  />
+                ))}
 
-                <TableEmptyRows
-                  height={77}
-                  emptyRows={emptyRows(page, rowsPerPage, users.length)}
-                />
+              <TableEmptyRows height={77} emptyRows={emptyRows(page, rowsPerPage, users.length)} />
 
-                {notFound && <TableNoData query={filterName} />}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Scrollbar>
+              {notFound && <TableNoData query={filterName} />}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Scrollbar>
 
-        <TablePagination
-          page={page}
-          component="div"
-          count={users.length}
-          rowsPerPage={rowsPerPage}
-          onPageChange={handleChangePage}
-          rowsPerPageOptions={[5, 10, 25]}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Card>
-    </Container>
+      <TablePagination
+        page={page}
+        component="div"
+        count={users.length}
+        rowsPerPage={rowsPerPage}
+        onPageChange={handleChangePage}
+        rowsPerPageOptions={[5, 10, 25]}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+      {/* </Card> */}
+    </div>
   );
 }

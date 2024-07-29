@@ -36,7 +36,7 @@ export default function NewService() {
       <Stack spacing={3} sx={{ my: 3 }}>
         <TextField name="title" label="Title" />
 
-        <TextField name="type" label="Type" />
+        <TextField name="type" label="Service Type" />
       </Stack>
 
       <LoadingButton
@@ -47,7 +47,7 @@ export default function NewService() {
         color="error"
         onClick={handleClick}
       >
-        Login
+        Add Service
       </LoadingButton>
     </>
   );

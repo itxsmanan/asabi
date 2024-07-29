@@ -93,18 +93,18 @@ export default function UserTableRow({
           sx: { width: 140 },
         }}
       >
-        <MenuItem onClick={handleCloseMenu}>
+        {/* <MenuItem onClick={handleCloseMenu}>
           <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
           Edit
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleDetails}>
           <Iconify icon="eva:list-fill" sx={{ mr: 2 }} />
           Details
         </MenuItem>
-        <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
+        {/* <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
           Delete
-        </MenuItem>{' '}
+        </MenuItem>{' '} */}
       </Popover>
     </>
   );

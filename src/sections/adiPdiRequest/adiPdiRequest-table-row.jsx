@@ -12,7 +12,7 @@ import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-import { useRouter } from 'src/routes/hooks';
+// import { useRouter } from 'src/routes/hooks';
 
 // import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
@@ -27,7 +27,8 @@ export default function UserTableRow({
   number,
   email,
   avatarUrl,
-  // company,
+  servicesType,
+  servicesProvider,
   // role,
   // isVerified,
   // status,
@@ -39,17 +40,17 @@ export default function UserTableRow({
     setOpen(event.currentTarget);
   };
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleDetails = (i) => {
-    router.push(`/servicesProviderDetails/${i}`);
-    console.log('id:', i);
-  };
-  const router2 = useRouter();
+  // const handleDetails = (i) => {
+  //   router.push(`/servicesProviderDetails/${i}`);
+  //   console.log('id:', i);
+  // };
+  // const router2 = useRouter();
 
-  const handleSubContractors = (i) => {
-    router2.push('/subContractorsView');
-  };
+  // const handleSubContractors = (i) => {
+  //   router2.push('/subContractorsView');
+  // };
 
   const handleCloseMenu = () => {
     setOpen(null);
@@ -103,6 +104,8 @@ export default function UserTableRow({
 
         <TableCell>{number}</TableCell>
         <TableCell>{email}</TableCell>
+        <TableCell>{name}</TableCell>
+        <TableCell align="center">{servicesType}</TableCell>
 
         <TableCell align="center">
           <Button
@@ -139,13 +142,13 @@ export default function UserTableRow({
           <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
           Edit
         </MenuItem>{' '} */}
-        <MenuItem onClick={() => handleDetails({ id })}>
-          <Iconify icon="eva:list-fill" sx={{ mr: 2 }} />
-          Details
+        <MenuItem onClick={() => handleCloseMenu}>
+          <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
+          Edit
         </MenuItem>
-        <MenuItem onClick={() => handleSubContractors({ id })}>
-          <Iconify icon="eva:people-fill" sx={{ mr: 2 }} />
-          Sub-Contractors
+        <MenuItem onClick={() => handleCloseMenu}>
+          <Iconify icon="eva:trash-fill" sx={{ mr: 2 }} />
+          Delete
         </MenuItem>
         {/* <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
@@ -165,7 +168,8 @@ UserTableRow.propTypes = {
   sname: PropTypes.any,
   email: PropTypes.any,
   number: PropTypes.any,
-  // role: PropTypes.any,
+  servicesType: PropTypes.any,
+  servicesProvider: PropTypes.any,
   // selected: PropTypes.any,
   // status: PropTypes.string,
 };

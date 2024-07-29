@@ -3,30 +3,28 @@ import { useState } from 'react';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
-import { useRouter } from 'src/routes/hooks';
-
 import { users } from 'src/_mock/user';
 
-import Iconify from 'src/components/iconify';
+// import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
 import TableNoData from '../table-no-data';
 import TableEmptyRows from '../table-empty-rows';
-import ServicesTableRow from '../services-table-row';
-import ServicesTableHead from '../services-table-head';
-import ServicesTableToolbar from '../services-table-toolbar';
+import AdiPdiRequestTableRow from '../adiPdiRequest-table-row';
+import AdiPdiRequestTableHead from '../adiPdiRequest-table-head';
 import { emptyRows, applyFilter, getComparator } from '../utils';
+import AdiPdiRequestTableToolbar from '../adiPdiRequest-table-toolbar';
 
 // ----------------------------------------------------------------------
 
-export default function UserPage() {
+export default function AdiPdiRequestPage() {
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -47,14 +45,14 @@ export default function UserPage() {
     }
   };
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = users.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
+  // const handleSelectAllClick = (event) => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = users.map((n) => n.name);
+  //     setSelected(newSelecteds);
+  //     return;
+  //   }
+  //   setSelected([]);
+  // };
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
@@ -96,28 +94,18 @@ export default function UserPage() {
 
   const notFound = !dataFiltered.length && !!filterName;
 
-  const router = useRouter();
-  const handleSubmt = () => {
-    router.push('/newServicePage');
-  };
-
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <Typography variant="h4">Services</Typography>
+        <Typography variant="h4">ADI/PDI Requests</Typography>
 
-        <Button
-          variant="contained"
-          color="error"
-          startIcon={<Iconify icon="eva:plus-fill" />}
-          onClick={() => handleSubmt()}
-        >
-          New Service
-        </Button>
+        {/* <Button variant="contained" color="error" startIcon={<Iconify icon="eva:plus-fill" />}>
+          New User
+        </Button> */}
       </Stack>
 
       <Card>
-        <ServicesTableToolbar
+        <AdiPdiRequestTableToolbar
           numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
@@ -125,36 +113,47 @@ export default function UserPage() {
 
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
-            <Table sx={{ minWidth: 800 }}>
-              <ServicesTableHead
+            <Table sx={{ minWidth: 1200 }}>
+              <AdiPdiRequestTableHead
                 order={order}
                 orderBy={orderBy}
                 rowCount={users.length}
                 numSelected={selected.length}
                 onRequestSort={handleSort}
-                onSelectAllClick={handleSelectAllClick}
+                // onSelectAllClick={handleSelectAllClick}
                 headLabel={[
-                  { id: 'services', label: 'Title' },
-                  { id: 'type', label: 'Services Type' },
-                  // // { id: 'role', label: 'Role' },
-                  // // { id: 'isVerified', label: 'Verified', align: 'center' },
+                  { id: 'name', label: 'Name' },
+                  // { id: 'company', label: 'Company' },
+
+                  { id: 'sname', label: 'Sur Name' },
+                  { id: 'number', label: 'Number' },
+                  { id: 'email', label: 'Email' },
+                  { id: 'servicesProvider', label: 'Service Providers ' },
+                  { id: 'servicesType', label: 'Type ' },
+                  // { id: 'role', label: 'Role' },
+                  { id: 'isVerified', label: 'Verified', align: 'center' },
                   // { id: 'status', label: 'Status' },
-                  { id: '' },
+                  { id: `${users.id}` },
                 ]}
               />
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
-                    <ServicesTableRow
+                    <AdiPdiRequestTableRow
                       key={row.id}
-                      services={row.services}
-                      type={row.type}
-                      status={row.status}
-                      company={row.company}
+                      id={row.id}
+                      // status={row.status}
+                      name={row.name}
+                      sname={row.sname}
+                      number={row.number}
+                      email={row.email}
+                      servicesProvider={row.Name}
+                      servicesType={row.servicesType}
+                      // company={row.company}
                       avatarUrl={row.avatarUrl}
                       isVerified={row.isVerified}
-                      selected={selected.indexOf(row.name) !== -1}
+                      // selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
                     />
                   ))}

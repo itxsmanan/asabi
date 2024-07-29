@@ -19,7 +19,7 @@ export default function AnnouncementsPage() {
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <Typography variant="h4">Add Announcement</Typography>
+        <Typography variant="h4">Send Announcement</Typography>
       </Stack>
       <Box
         width={500}
@@ -38,7 +38,7 @@ export default function AnnouncementsPage() {
         }}
       >
         <TextField
-          label="Enter your text"
+          label="Type your"
           multiline
           rows={7}
           variant="outlined"
@@ -48,7 +48,7 @@ export default function AnnouncementsPage() {
           fullWidth
         />
         <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
-          Add
+          Send
         </Button>
       </Box>
     </Container>

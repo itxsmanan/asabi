@@ -71,7 +71,7 @@ export default function UserTableRow({
 
         <TableCell>{number}</TableCell>
         <TableCell>{email}</TableCell>
-        <TableCell>{services}</TableCell>
+        <TableCell align="center">{services}</TableCell>
 
         {/* <TableCell>
           <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
